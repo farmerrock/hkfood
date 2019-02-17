@@ -8,9 +8,9 @@ from io import BytesIO
 from fastai import *
 from fastai.vision import *
 
-model_file_url = 'https://drive.google.com/uc?export=download&id=1jQpraT0cFDulLGBOikqEAv-eDuq0kgax'
+model_file_url = 'https://drive.google.com/uc?export=download&id=1fNyNnhYLYDxrLDU77ce1sjMqPuL_U0nv'
 model_file_name = 'model'
-classes = ['bujaicake', 'eggwaffles', 'fishball']
+classes = ['缽仔糕', '雞蛋仔', '魚蛋']
 path = Path(__file__).parent
 
 app = Starlette()
@@ -27,7 +27,7 @@ async def download_file(url, dest):
 async def setup_learner():
     await download_file(model_file_url, path/'models'/f'{model_file_name}.pth')
     data_bunch = ImageDataBunch.single_from_classes(path, classes,
-        tfms=get_transforms(), size=224).normalize(imagenet_stats)
+        df_tfms=get_transforms(), size=224).normalize(imagenet_stats)
     learn = create_cnn(data_bunch, models.resnet34, pretrained=False)
     learn.load(model_file_name)
     return learn
@@ -47,7 +47,7 @@ async def analyze(request):
     data = await request.form()
     img_bytes = await (data['file'].read())
     img = open_image(BytesIO(img_bytes))
-    return JSONResponse({'result': learn.predict(img)[0]})
+    return JSONResponse({'result': str(learn.predict(img)[0])})
 
 if __name__ == '__main__':
     if 'serve' in sys.argv: uvicorn.run(app, host='0.0.0.0', port=8080)
