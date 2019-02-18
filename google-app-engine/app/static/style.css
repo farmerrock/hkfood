@@ -12,11 +12,11 @@ body {
     padding-left:50px;
     padding-right:50px;
     text-align: center;
-    font-size: 14px;
+    font-size: 56px;
 }
 
 .title {
-    font-size: 30px;
+    font-size: 120px;
     margin-top: 1em;
     margin-bottom: 1em;
     color: #262626;
@@ -32,32 +32,32 @@ body {
 
 .upload-label {
     padding: 10px;
-    font-size: 12px;
+    font-size: 48px;
 }
 
 .result-label {
     margin-top: 0.5em;
     padding: 10px;
-    font-size: 13px;
+    font-size: 52px;
 }
 
 button.choose-file-button {
-  width: 200px;
-  height: 40px;
+  width: 400px;
+  height: 80px;
   border-radius: 2px;
   background-color: #ffffff;
   border: solid 1px #7052CB;
-  font-size: 13px;
+  font-size: 52px;
   color: #7052CB;
 }
 
 button.analyze-button {
-    width: 200px;
-    height: 40px;
+    width: 400px;
+    height: 80px;
     border: solid 1px #7052CB;
     border-radius: 2px;
     background-color: #7052CB;
-    font-size: 13px;
+    font-size: 52px;
     color: #ffffff;
 }
 
